@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="name">Full Name:</label>
+        <input type="text" placeholder="Enter your name" required><br><br>
+
+        <label for="username">Username:</label>
+        <input type="text" placeholder="Enter your username" minlength="6" maxlength="15" required><br><br>
+
+        <label for="about">Bio:</label>
+        <textarea rows="6" cols="40" placeholder="Type your message here..."></textarea> <br><br>
+
+        <label for="age">Age</label>
+        <input type="number" placeholder="18-60" min="18" max="60" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" placeholder="Enter your email" required><br><br>
+
+        <label for="phone">Phone Number:</label>
+        <input type="text" placeholder="08012345678" pattern="[0-8]{10}" disabled><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" placeholder="password" minlength="6" maxlength="8" required><br><br>
+
+        <select>
+            <option value="">Select a language</option>
+            <option value="">HTML</option>
+            <option value="">CSS</option>
+            <option value="">Javascript</option>
+        </select><br><br>
+
+        <select>
+            <optgroup label="Programming">
+            <option>HTML</option>
+            <option>CSS</option>
+            <option>JavaScript</option>
+            </optgroup>
+            <optgroup label="Design">
+            <option>Figma</option>
+            <option>Photoshop</option>
+            </optgroup>
+        </select>
+
+        <label for="country">Country</label>
+        <input list="countries" id="country" name="country">
+        <datalist id="countries">
+            <option value="Nigeria">
+            <option value="Ghana">
+            <option value="Kenya">
+            <option value="South Africa">
+        </datalist><br><br>
+
+
+        <fieldset>
+            <legend>Personal Information</legend>
+
+            <label for="name">Name:</label>
+            <input type="text"><br><br>
+
+            <label for="age">Age:</label>
+            <input type="number">
+        </fieldset><br><br>
+
+          <button type="submit">Submit</button>
+          <button type="reset">Clear</button>
+    </form>
+</body>
+</html>

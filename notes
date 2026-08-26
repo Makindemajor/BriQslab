@@ -1,0 +1,12 @@
+# Git Summary
+
+Git is a **version control system** that helps developers track changes, manage code, and collaborate on projects. It saves the history of a project and allows you to return to previous versions.
+
+Common commands include:
+
+* `git init` – creates a repository
+* `git add` – stages changes
+* `git commit` – saves changes
+* `git push` – uploads changes
+* `git pull` – downloads changes
+* `git clone` – copies a repository

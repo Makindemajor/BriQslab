@@ -1,62 +1,65 @@
-# 🧪 Project Sandbox: Test Page
+# BriQsLab Website
 
-A lightweight, isolated development environment designed for **testing features, prototyping UI components, and experimenting with new APIs** before merging them into production.
+A PHP website for BriQsLab, a technology training academy. It includes pages for the academy, courses, contact enquiries, and student enrollment.
 
----
+## Requirements
 
-## 🚀 Quick Start
+- PHP 8.0 or later
+- PostgreSQL for saving contact messages and enrollment requests
+- PHP PDO PostgreSQL driver (`pdo_pgsql`)
 
-Get your local test environment running in less than a minute.
+There are no Composer or npm dependencies required for the current site.
 
-```bash
-# Clone the repository
-git clone https://github.com
+## Run locally on Windows
 
-# Navigate into the project directory
-cd test-page
+Open Command Prompt or the VS Code terminal and change to the project directory:
 
-# Install dependencies
-npm install
-
-# Start the local development server
-npm run dev
+```bat
+cd /d C:\Users\HomePC\projects\majorlar\briqslab
 ```
 
----
+Start PHP's built-in development server:
 
-## 🛠️ Main Features Tested Here
+```bat
+php -S localhost:8000
+```
 
-* **Component Playground:** Isolation testing for shared UI elements (buttons, modals, forms).
-* **API Testing Ground:** Safely mocking and verifying external REST/GraphQL endpoints.
-* **Performance Benchmarking:** Stress-testing rendering speeds and state management overhead.
-* **Responsive Design Sandbox:** Cross-device break-point verification.
+Open [http://localhost:8000](http://localhost:8000) in your browser. Keep the terminal open while using the site; press `Ctrl+C` to stop the server.
 
----
+If `php` is not recognized, install PHP or use XAMPP. With XAMPP, place the project folder inside `C:\xampp\htdocs` and start Apache, then visit `http://localhost/briqslab/`.
 
-## 📁 Project Structure
+## Database setup
+
+The home, about, and courses pages can be viewed without the database. The contact and enrollment pages connect to PostgreSQL through `includes/db.php` and need the database configured before they can be used.
+
+1. Create a PostgreSQL database named `briqslab`.
+2. Run [`schema.sql`](schema.sql) against that database to create the `contact_messages` and `enrollments` tables. For example, using `psql`:
+
+   ```bat
+   psql -U postgres -d briqslab -f schema.sql
+   ```
+
+3. Update the host, port, database name, username, and password in `includes/db.php` to match your PostgreSQL setup. The checked-in password value is a placeholder; replace it with your local database password. Do not commit real credentials.
+4. Ensure PHP's `pdo_pgsql` extension is enabled. If PHP reports that it cannot find the `pgsql` PDO driver, enable `pdo_pgsql` in the PHP configuration (`php.ini`) and restart the server.
+
+## Project structure
 
 ```text
-test-page/
-├── .github/           # CI/CD workflows for test deployments
-├── src/
-│   ├── components/    # Components currently undergoing QA
-│   ├── experiments/   # Proof-of-concept scripts and styles
-│   └── main.js        # Main entry point for the test suite
-├── package.json       # Project dependencies and scripts
-└── README.md          # You are here!
+.
+├── index.php          # Home page
+├── about.php          # About BriQsLab
+├── courses.php        # Course listings
+├── contact.php        # Contact form
+├── enroll.php         # Enrollment form
+├── style.css          # Site styles
+├── schema.sql         # PostgreSQL table definitions
+└── includes/
+    ├── db.php         # PostgreSQL connection
+    ├── header.php     # Shared page header and navigation
+    └── footer.php     # Shared footer
 ```
 
----
+## Notes
 
-## 📝 Rules of the Sandbox
-
-To keep this test page functional and clean, please follow these guidelines:
-1. **Never commit secrets:** Do not push API keys, private tokens, or production credentials. Use `.env.local` instead.
-2. **Isolate your work:** Create a sub-folder under `src/experiments/` for temporary or disruptive tests.
-3. **Keep it lightweight:** Avoid importing heavy, unverified third-party packages to the root project configuration.
-
----
-
-## 🛟 Support & Contributions
-
-Since this is a testing playground, feel free to break things! If you discover a configuration bug or want to add a new testing utility, open an issue or submit a pull request.
+- Use PHP's built-in server for local development only; it is not intended for production hosting.
+- Contact and enrollment form submissions are stored in PostgreSQL. Keep database credentials private and use production-grade configuration when deploying.
